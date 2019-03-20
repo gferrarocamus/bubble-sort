@@ -1,6 +1,5 @@
+=begin
 def bubble_sort(arr)
-    
-    sorted = false
 
     (arr.length-1).times do
         arr.each_with_index do |item, i|
@@ -16,9 +15,23 @@ def bubble_sort(arr)
     return arr
 end
 
+=end
 
-test = [4,2,6,19,3,1,20]
-bubble_sort(test)
+def bubble_sort_by(arr)
+    (arr.length-1).times do
+        arr.each_with_index do |item, i|
+            yield(item, arr[i+1])
+        end    
+    end
+end
+
+bubble_sort_by([4,2,6,19,3,1,20]) { |x,y| x, y = y, x if x > y  }
+
+
+
+#test 
+#bubble_sort(test)
+#bubble_sort_by(test)
 
 test.each {|item| puts item}
 
